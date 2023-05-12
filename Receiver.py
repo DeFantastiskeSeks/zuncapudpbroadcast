@@ -7,23 +7,28 @@ serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverAddress = ("", serverPort)
 serverSocket.bind(serverAddress)
 print("The server is ready")
+
+userInfo = { "name": "simon"}
+
 while True:
     uv, clientAddress = serverSocket.recvfrom(2048)
-    print(uv)
+    #print(uv)
     uvRecord = uv.decode()
 
-    print("Received message:" + uvRecord)
+    #print("Received message:" + uvRecord)
     uvLoad = json.loads(uvRecord)
-
+    
     for i in uvLoad.values():
         arr.append(i)
+        
     print(arr)
-    if(arr.len() > 4):
-       arraysum = sum(arr)
-
-
-
-
-
-    #api_url = "https://speedtrapapi20230411142537.azurewebsites.net/api/SpeedTraps"
-    #request = requests.post(api_url, json=speedTrapDe)
+    
+    if(len(arr) > 4):
+        arrsum = round(sum(arr) / 5, 1)
+        print(arrsum)
+        sumParams = {"UV": arrsum}
+        api_url = "https://zuncapapi.azurewebsites.net/api/Users/exposure"
+        request = requests.post(api_url, params=sumParams, json=userInfo)
+        print(request.status_code)
+        print(request.text)
+        arr.clear()

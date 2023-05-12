@@ -12,6 +12,9 @@ while True:
 
     uvInfo = { "uv": uv}
     uvJson = json.dumps(uvInfo)
+    #dump laver en dictionary til string (JSON object)
+    #så når man laver requests og sender data som JSON skal man ikke dump
+    #request = requests.post(api_url, json=JSONDict)
 
     clientSocket.sendto(uvJson.encode(), (serverName, serverPort))
     print("send file")
