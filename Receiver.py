@@ -8,7 +8,7 @@ serverAddress = ("", serverPort)
 serverSocket.bind(serverAddress)
 print("The server is ready")
 
-userInfo = { "name": "simon"}
+userInfo = { "name": "simon" }
 
 while True:
     uv, clientAddress = serverSocket.recvfrom(2048)
@@ -18,11 +18,11 @@ while True:
     
     for i in uvLoad.values():
         arr.append(i)
-        
+    
     print(arr)
     
-    if(len(arr) > 99):
-        arrsum = round(sum(arr) / 100, 1)
+    if(len(arr) > 59):
+        arrsum = round(sum(arr) / 60, 1)
         print(arrsum)
         sumParams = {"UV": arrsum}
         api_url = "https://zuncapapi.azurewebsites.net/api/Users/exposure"
