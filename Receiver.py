@@ -21,8 +21,8 @@ while True:
         
     print(arr)
     
-    if(len(arr) > 4):
-        arrsum = round(sum(arr) / 5, 1)
+    if(len(arr) > 99):
+        arrsum = round(sum(arr) / 100, 1)
         print(arrsum)
         sumParams = {"UV": arrsum}
         api_url = "https://zuncapapi.azurewebsites.net/api/Users/exposure"
