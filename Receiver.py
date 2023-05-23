@@ -12,10 +12,8 @@ userInfo = { "name": "simon"}
 
 while True:
     uv, clientAddress = serverSocket.recvfrom(2048)
-    #print(uv)
     uvRecord = uv.decode()
 
-    #print("Received message:" + uvRecord)
     uvLoad = json.loads(uvRecord)
     
     for i in uvLoad.values():
